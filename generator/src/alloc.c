@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-int	wrd(char *str, char l)
+int wrd(char *str, char l)
 {
     int nb = 0;
     int i = 0;
@@ -25,7 +25,7 @@ int	wrd(char *str, char l)
     return (nb + 1);
 }
 
-int	wl(char *str, char l)
+int wl(char *str, char l)
 {
     int i = 0;
 

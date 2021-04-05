@@ -32,5 +32,6 @@ int	wl(char *str, char l);
 char **the_malloc(char *str, char l);
 char *refill_the_string(struct coord c);
 void aff(char **tab, struct coord c);
+int body(char **args);
 
 #endif /* !LIB_H_ */
