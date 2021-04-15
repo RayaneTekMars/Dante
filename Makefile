@@ -14,7 +14,7 @@ SRC_GENERATOR	=	generator/src/aff.c				\
 					generator/src/lib2.c			\
 					generator/src/lib.c				\
 					generator/src/main.c			\
-					generator/src/body.c			\
+					generator/src/for_the_string.c	\
 
 OBJ1		=	$(SRC_SOLVER:.c=.o)
 

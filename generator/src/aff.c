@@ -15,13 +15,9 @@
 void aff(char **tab, struct coord c)
 {
     int i = 0;
-    int j = 0;
 
-    for (; i < c.nbl; i++) {
-        j = 0;
-        for (; j < c.nbc - 1; j++) {
-            my_putchar(tab[i][j]);
-        }
+    for (; i < c.nbl && tab[i] != NULL; i++) {
+        my_putstr(tab[i]);
         my_putchar('\n');
     }
 }

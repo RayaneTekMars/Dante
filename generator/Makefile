@@ -11,7 +11,7 @@ SRC     =	src/main.c				\
 			src/lib2.c				\
 			src/alloc.c				\
 			src/error_handling.c	\
-			src/body.c				\
+			src/for_the_string.c	\
 
 OBJ     =	$(SRC:.c=.o)
 

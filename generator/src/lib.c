@@ -25,12 +25,7 @@ int my_strlen(char const *str)
 
 int my_putstr(char const *str)
 {
-    int var = 0;
-
-    while (str[var] != '\0') {
-        my_putchar(str[var]);
-        var = var + 1;
-    }
+    write(1, str, my_strlen(str));
     return (0);
 }
 
