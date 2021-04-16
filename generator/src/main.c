@@ -66,7 +66,7 @@ int body(int ac, char **args)
     char *str = refill_the_string(c);
     char **tab = the_malloc(str, '\n');
 
-    if (my_scmp(args[3], "[perfect]") == 0) {
+    if (ac == 4) {
         tab = the_wall(tab, c);
         aff(tab, c);
         if (c.nbl % 2 == 0 && c.nbl > c.nbc) {
@@ -93,7 +93,7 @@ int main(int ac, char **av)
         return (84);
     if (gtr(av[1]) == 1 || gtr(av[2]) == 1)
         return (84);
-    if (ac == 4 && my_scmp(av[3], "[perfect]") == 1)
+    if (ac == 4 && my_scmp(av[3], "perfect") == 1)
         return (84);
     body(ac, av);
     return (0);
