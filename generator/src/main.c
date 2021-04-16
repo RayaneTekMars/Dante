@@ -66,7 +66,6 @@ int body(int ac, char **args)
     char *str = refill_the_string(c);
     char **tab = the_malloc(str, '\n');
 
-    my_put_nbr(ac);
     if (my_scmp(args[3], "[perfect]") == 0) {
         tab = the_wall(tab, c);
         aff(tab, c);
