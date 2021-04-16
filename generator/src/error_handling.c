@@ -5,7 +5,7 @@
 ** eroor gestion
 */
 
-int geter(char *str)
+int gtr(char *str)
 {
     int i = 0;
 

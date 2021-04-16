@@ -46,3 +46,18 @@ int my_put_nbr(int nb)
     }
     return (0);
 }
+
+int my_scmp(char *s1, char *s2)
+{
+    int i = 0;
+
+    if (my_strlen(s1) == my_strlen(s2)) {
+        for (; i < my_strlen(s1); i++) {
+            if (s1[i] != s2[i]) {
+                return (1);
+            }
+        }
+    } else 
+        return (1);
+    return (0);
+}
