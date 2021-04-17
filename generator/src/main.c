@@ -79,11 +79,13 @@ int body(int ac, char **args)
 
 int choice(char **tab, struct coord c, char **av, int ac)
 {
+    int i = 0;
+
     if (ac == 4) {
         tab = the_wall(tab, c);
         aff(tab, c);
         if (c.nbl % 2 == 0 && c.nbl > c.nbc) {
-            for (int i = 0; i < c.nbc - 1; i++)
+            for (; i < c.nbc - 1; i++)
                 my_putchar('X');
             my_putchar('*');
         }
@@ -91,7 +93,7 @@ int choice(char **tab, struct coord c, char **av, int ac)
         tab = the_wall_imperfect(tab, c);
         aff(tab, c);
         if (c.nbl % 2 == 0 && c.nbl > c.nbc) {
-            for (int i = 0; i < c.nbc - 1; i++)
+            for (; i < c.nbc - 1; i++)
                 my_putchar('X');
             my_putchar('*');
         }
