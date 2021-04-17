@@ -18,6 +18,7 @@ void aff(char **tab, struct coord c)
 
     for (; i < c.nbl && tab[i] != NULL; i++) {
         my_putstr(tab[i]);
-        my_putchar('\n');
+        if (i + 1 < c.nbl)
+            my_putchar('\n');
     }
 }
