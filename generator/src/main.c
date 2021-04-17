@@ -33,14 +33,9 @@ char **the_wall(char **tab, struct coord c)
     return (tab);
 }
 
-char **the_wall_imperfect(char **tab, struct coord c)
+char **imperfectv2(char **tab, int j, struct coord c, int b)
 {
     int i = 1;
-    int j = -1;
-    int b = 0;
-
-    c.nbl % 2 == 1 ? j = 0 : 0;
-    c.nbl == c.nbc ? j = 1 : 0;
     for (int a = 0; i < c.nbl + j; i++) {
         a = (random() % c.nbc) - 1;
         a > c.nbc ? a-- : 0;
@@ -51,6 +46,17 @@ char **the_wall_imperfect(char **tab, struct coord c)
         tab[i][a] = '*';
         tab[i][b] = '*';
     }
+    return (tab);
+}
+
+char **the_wall_imperfect(char **tab, struct coord c)
+{
+    int j = -1;
+    int b = 0;
+
+    c.nbl % 2 == 1 ? j = 0 : 0;
+    c.nbl == c.nbc ? j = 1 : 0;
+    tab = imperfectv2(tab, j, c, b);
     if (c.nbl % 2 == 1 || c.nbl < c.nbc)
         tab[c.nbl - 1][c.nbc - 1] = '*';
     else
@@ -66,6 +72,13 @@ int body(int ac, char **args)
     char *str = refill_the_string(c);
     char **tab = the_malloc(str, '\n');
 
+    choice(tab, c, args, ac);
+    free(str);
+    return (0);
+}
+
+int choice(char **tab, struct coord c, char **av, int ac)
+{
     if (ac == 4) {
         tab = the_wall(tab, c);
         aff(tab, c);
@@ -83,7 +96,6 @@ int body(int ac, char **args)
             my_putchar('*');
         }
     }
-    free(str);
     return (0);
 }
 

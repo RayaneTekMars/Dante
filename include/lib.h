@@ -35,5 +35,7 @@ char *refill_the_string(struct coord c);
 void aff(char **tab, struct coord c);
 int body(int ac, char **args);
 char **the_wall_imperfect(char **tab, struct coord c);
+int choice(char **tab, struct coord c, char **av, int ac);
+char **imperfectv2(char **tab, int j, struct coord c, int b);
 
 #endif /* !LIB_H_ */
