@@ -1,5 +1,5 @@
 /*
-** EPITECH PROcountECT, 2021
+** EPITECH PROJECT, 2021
 ** dante
 ** File description:
 ** solver_utils

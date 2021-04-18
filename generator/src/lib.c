@@ -57,7 +57,7 @@ int my_scmp(char *s1, char *s2)
                 return (1);
             }
         }
-    } else 
+    } else
         return (1);
     return (0);
 }

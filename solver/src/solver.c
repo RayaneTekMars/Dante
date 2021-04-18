@@ -10,7 +10,7 @@
 int check_pathes(int i, char c, dante_t *sol)
 {
     int count = 0;
-    
+
     if (i > sol->x && sol->maze[i - sol->x - 1] == c)
         count += 1;
     if (sol->maze[i + sol->x + 1] == c && i < (sol->size - sol->x))
