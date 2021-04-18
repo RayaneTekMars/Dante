@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
-#include "../../include/lib.h"
+#include "../include/lib.h"
 
 int neg(int cmt, int res)
 {

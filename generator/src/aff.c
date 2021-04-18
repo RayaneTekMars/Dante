@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "../../include/lib.h"
+#include "../include/lib.h"
 #include <stdio.h>
 #include <sys/stat.h>
 

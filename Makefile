@@ -1,47 +1,36 @@
 ##
-## EPITECH PROJECT, 2020
-## makefile
+## EPITECH PROJECT, 2021
+## dante
 ## File description:
 ## Makefile
 ##
 
-SRC_SOLVER		=	solver/src/main.c				\
-					solver/src/error_handling.c		\
-
-SRC_GENERATOR	=	generator/src/aff.c				\
-					generator/src/alloc.c			\
-					generator/src/error_handling.c	\
-					generator/src/lib2.c			\
-					generator/src/lib.c				\
-					generator/src/main.c			\
-					generator/src/for_the_string.c	\
-
-OBJ1		=	$(SRC_SOLVER:.c=.o)
-
-OBJ2		=	$(SRC_GENERATOR:.c=.o)
-
-NAME1	=	solver/solver
-
-NAME2	=	generator/generator
-
-all:	$(NAME1)	$(NAME2)
-
-$(NAME1):
-		gcc -g3 -Wall -c $(SRC_SOLVER)
-		gcc -g $(SRC_SOLVER) -o $(NAME1)
-
-$(NAME2):
-		gcc -g3 -Wall -c $(SRC_GENERATOR)
-		gcc -g $(SRC_GENERATOR) -o $(NAME2)
+all:
+	@echo -ne "Generator : Make\n"
+	@make --no-print-directory -C ./generator $@
+	@echo -ne "Solver : Make\n"
+	@make --no-print-directory -C ./solver $@
 
 clean:
-		rm -rf $(OBJ1)
-		rm -rf $(OBJ2)
-		rm -rf *.o
-		rm -rf *~
+	@echo -ne "Generator : Make Clean\n"
+	@make --no-print-directory -C ./generator $@
+	@echo -ne "Solver : Make Clean\n"
+	@make --no-print-directory -C ./solver $@
 
-fclean: clean
-	rm -rf $(NAME1)
-	rm -rf $(NAME2)
+fclean:
+	@echo -ne "Generator : Make Fclean\n"
+	@make --no-print-directory -C ./generator $@
+	@echo -ne "Solver : Make Fclean\n"
+	@make --no-print-directory -C ./solver $@
 
-re:	fclean	all
+re:
+	@echo -ne "Generator : Make Re\n"
+	@make --no-print-directory -C ./generator $@
+	@echo -ne "Solver : Make Re\n"
+	@make --no-print-directory -C ./solver $@
+
+valgrind:
+	@echo -ne "Generator : Make Valgrind\n"
+	@make --no-print-directory -C ./generator $@
+	@echo -ne "Solver : Make Valgrind\n"
+	@make --no-print-directory -C ./solver $@

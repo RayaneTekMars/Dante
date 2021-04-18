@@ -10,7 +10,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
-#include "../../include/lib.h"
+#include "../include/lib.h"
+
 /*
 char *refill_the_string(struct coord c)
 {

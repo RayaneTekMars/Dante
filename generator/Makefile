@@ -1,34 +1,43 @@
 ##
-## EPITECH PROJECT, 2020
-## makefile
+## EPITECH PROJECT, 2021
+## dante
 ## File description:
 ## Makefile
 ##
 
-SRC     =	src/main.c				\
-			src/aff.c				\
-			src/lib.c				\
-			src/lib2.c				\
-			src/alloc.c				\
-			src/error_handling.c	\
-			src/for_the_string.c	\
+SRC	=	$(shell find -name "*.c")
 
-OBJ     =	$(SRC:.c=.o)
+OBJ	=	$(SRC:.c=.o)
 
 NAME	=	generator
 
-all:	$(NAME)
+all:	$(NAME) clean
 
-$(NAME):
-		gcc -g3 -Wall -c $(SRC)
-		gcc -g $(SRC) -o $(NAME)
+$(NAME):	$(OBJ)
+	@gcc -o $(NAME) $(OBJ) -w -I ./include
+
+%.o:	%.c
+	@gcc -c $< -w -I ./include $(LDFLAGS) $(LIB) -o $@
 
 clean:
-		rm -rf $(OBJ)
-		rm -rf *.o
-		rm -rf *~
+	@@for p in $(SRC_LIB); do \
+		make --no-print-directory -C $$p $@; \
+	done
+	@rm -f $(OBJ)
+	@rm -f *# *~ ./*/*# ./*/*~ ./*/*/*# ./*/*/*~ vgcore*
 
-fclean: clean
-		rm -rf $(NAME)
+fclean:
+	@@for p in $(SRC_LIB); do \
+		make --no-print-directory -C $$p $@; \
+	done
+	@rm -f $(OBJ)
+	@rm -f *# *~ ./*/*# ./*/*~ ./*/*/*# ./*/*/*~ vgcore*
+	@rm -f $(NAME)
 
-re:	fclean	all
+re: fclean all
+
+valgrind:
+	@@for p in $(SRC_LIB); do \
+		make --no-print-directory -C $$p $@; \
+	done
+	@gcc -g3 -o $(NAME) $(SRC) -I ./include $(LDFLAGS) $(LIBS)
