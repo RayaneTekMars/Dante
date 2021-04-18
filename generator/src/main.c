@@ -15,27 +15,25 @@
 char **the_wall(char **tab, struct coord c)
 {
     int i = 1;
-    int j = -1;
 
-    c.nbl % 2 == 1 ? j = 0 : 0;
-    c.nbl == c.nbc ? j = 1 : 0;
-    for (int a = 0; i < c.nbl + j; i++) {
-        a = (random() % c.nbc) - 1;
-        a > c.nbc ? a-- : 0;
-        a < 0 ? a = 0 : 0;
+    for (int a = 0; i < c.nbl - 1; i++) {
+        a = (random() % c.nbc);
+        a < 0 || a >= c.nbc ? a = 0 : 0;
         i + 1 == c.nbl ? a = c.nbc - 1 : 0;
+        my_put_nbr(a);
+        my_putchar('\n');
         tab[i][a] = '*';
     }
-    if (c.nbl % 2 == 1 || c.nbl < c.nbc)
-        tab[c.nbl - 1][c.nbc - 1] = '*';
-    else
-        return (tab);
+    if (c.nbl == c.nbc && c.nbc % 2 == 0) {
+        tab[i][c.nbc - 1] = '*';
+    }
     return (tab);
 }
 
 char **imperfectv2(char **tab, int j, struct coord c, int b)
 {
     int i = 1;
+
     for (int a = 0; i < c.nbl + j; i++) {
         a = (random() % c.nbc) - 1;
         a > c.nbc ? a-- : 0;
