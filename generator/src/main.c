@@ -16,14 +16,17 @@ char **the_wall(char **tab, struct coord c)
 {
     int i = 1;
 
-    for (int a = 0; i < c.nbl - 1; i++) {
-        a = (random() % c.nbc);
+    my_put_nbr(i);
+    for (int a = 0; i < c.nbl; i++) {
+        a = (random() % c.nbc - 1);
         a < 0 || a >= c.nbc ? a = 0 : 0;
-        i + 1 == c.nbl ? a = c.nbc - 1 : 0;
-        tab[i][a] = '*';
+        i + 1 >= c.nbl ? a = c.nbc - 1 : 0;
+        c.nbl == 1 || c.nbc == 1 ? a = 0 : 0;
+        if (tab[i][a] != NULL)
+            tab[i][a] = '*';
     }
-    if (c.nbl == c.nbc && c.nbc % 2 == 0) {
-        tab[i][c.nbc - 1] = '*';
+    if ((c.nbl == c.nbc && c.nbc % 2 == 0) || c.nbl == 1 || c.nbc == 1) {
+        tab[c.nbl - 1][c.nbc - 1] = '*';
     }
     return (tab);
 }
@@ -33,14 +36,18 @@ char **imperfectv2(char **tab, int j, struct coord c, int b)
     int i = 1;
 
     for (int a = 0; i < c.nbl + j; i++) {
-        a = (random() % c.nbc) - 1;
-        a > c.nbc ? a-- : 0;
-        a < 0 ? a = 0 : 0;
-        i + 1 == c.nbl ? a = c.nbc - 1 : 0;
-        b == a ? b++ : 0;
-        b < 0 || b > c.nbc ? b = 0 : 0;
+        a = (random() % c.nbc - 1);
+        b = (random() % c.nbc);
+        a < 0 || a >= c.nbc ? a = 0 : 0;
+        b < 0 || b >= c.nbc ? b = 0 : 0;
+        i + 1 >= c.nbl ? a = c.nbc - 1 : 0;
+        c.nbl == 1 || c.nbc == 1 ? a = 0 : 0;
+        c.nbl == 1 || c.nbc == 1 ? b = 0 : 0;
         tab[i][a] = '*';
         tab[i][b] = '*';
+    }
+    if ((c.nbl == c.nbc && c.nbc % 2 == 0) || c.nbl == 1 || c.nbc == 1) {
+        tab[c.nbl - 1][c.nbc - 1] = '*';
     }
     return (tab);
 }
@@ -53,10 +60,6 @@ char **the_wall_imperfect(char **tab, struct coord c)
     c.nbl % 2 == 1 ? j = 0 : 0;
     c.nbl == c.nbc ? j = 1 : 0;
     tab = imperfectv2(tab, j, c, b);
-    if (c.nbl % 2 == 1 || c.nbl < c.nbc)
-        tab[c.nbl - 1][c.nbc - 1] = '*';
-    else
-        return (tab);
     return (tab);
 }
 
@@ -80,19 +83,9 @@ int choice(char **tab, struct coord c, char **av, int ac)
     if (ac == 4) {
         tab = the_wall(tab, c);
         aff(tab, c);
-        if (c.nbl % 2 == 0 && c.nbl > c.nbc) {
-            for (; i < c.nbc - 1; i++)
-                my_putchar('X');
-            my_putchar('*');
-        }
     } else {
         tab = the_wall_imperfect(tab, c);
         aff(tab, c);
-        if (c.nbl % 2 == 0 && c.nbl > c.nbc) {
-            for (; i < c.nbc - 1; i++)
-                my_putchar('X');
-            my_putchar('*');
-        }
     }
     return (0);
 }
