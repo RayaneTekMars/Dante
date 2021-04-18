@@ -20,8 +20,6 @@ char **the_wall(char **tab, struct coord c)
         a = (random() % c.nbc);
         a < 0 || a >= c.nbc ? a = 0 : 0;
         i + 1 == c.nbl ? a = c.nbc - 1 : 0;
-        my_put_nbr(a);
-        my_putchar('\n');
         tab[i][a] = '*';
     }
     if (c.nbl == c.nbc && c.nbc % 2 == 0) {
